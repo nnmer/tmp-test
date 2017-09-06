@@ -1,14 +1,15 @@
-#matrix-test{
+#matrix-original{
     margin-left:250px;
+    min-width: 130px;
     float: right;
 }
-#matrix-test .row-test {
+#matrix-original .cell-original {
     display: block;
     margin-top: 10px;
     width: 130px;
 }
 
-#matrix-test .cell-test, .cell-result{
+#matrix-original .cell-original, .cell-result{
     border: 1px solid black;
     width:  15px;
     height: 15px;
@@ -18,10 +19,11 @@
 
 
 #matrix-wrapper{
+    min-width: 130px;
     float: left;
 }
 
-#matrix .row {
+#matrix .row, #matrix-original .row {
     display: block;
     margin-top: 10px;
     width: 130px;

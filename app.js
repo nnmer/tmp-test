@@ -24,6 +24,8 @@ window.onload = function(){
     }
     $('#matrix').append(str);
 
+    originalStr = str.replace(/cell/g, "cell-original");
+    $('#matrix-original').append(originalStr);
 
     cellsElements = document.getElementsByClassName('cell');
     matrix        = document.getElementById('matrix');
