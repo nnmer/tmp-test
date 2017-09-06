@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link href="/styles.css" media="all" rel="stylesheet" />
+    <script src="/jquery.min.js"></script>
+    <script src="/app.js"></script>
+
+</head>
+<body>
+    <table id="matrix">
+
+    </table>
+</body>
+<script>
+    for(i=0;i<conf.frameSizeX;i++){
+        $('#matrix').append('<tr>');
+
+        for(j=0;j<conf.frameSizeY;j++){
+            var color = getRandomInt(1,conf.colorsTotal);
+            $('#matrix').append('<td class="color-'+color+'">'+color+'</td>');
+        }
+
+        $('#matrix').append('</tr>');
+    }
+</script>
+</html>

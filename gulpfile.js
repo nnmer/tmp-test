@@ -19,6 +19,7 @@ var browsersyncConfig = {
 gulp.task('watch', function() {
     browsersync(browsersyncConfig);
     gulp.watch([
+        '*.css',
         '*.js',
         '*.html'
     ])
