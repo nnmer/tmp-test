@@ -1,5 +1,6 @@
-start learning about the tile-matching / match-three topics
-there are different "complexities" that can be used in real game, some of them are: valuing longer chains higher, looking for combos. In the test this can ignore, focus only on matching-three
+Start learning about the tile-matching / match-three topics.
+
+There are different "complexities" that can be used in real game, some of them are: valuing longer chains higher, looking for combos. In the test this can ignore, focus only on matching-three.
 
 okay, checked the puzzle&dragons game, there are horizontal & vertical matches, 3 and more matches, combos etc.
 
