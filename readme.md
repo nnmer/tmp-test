@@ -8,7 +8,7 @@ As no additional requirements, we will do next assumptions:
 - match 3 only
 - do not count any combos, vertical matches etc.
 
-So make it simple for now, horizontal match-3 logic, with 1 iteration (once the finger is out released we only calculate the path and the matches)
+So make it simple for now, horizontal match-3 logic, once the finger is out released we calculate the path and the matches
 
 The matrix 6x5, totally 30 items; 5 types of colors, randomly filled in;
 
