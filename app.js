@@ -2,7 +2,7 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-var routePath     = [];
+var routePath     = {};
 var cellsElements = [];
 var matrix        = null;
 var $draggingContainer = null;
@@ -38,6 +38,7 @@ window.onload = function(){
 var mouseOffset = null;
 var isMouseDown = false;
 var lMouseState = false;
+var actionStep  = 0;        // to count number of attemps
 
 var $curTarget  = null;
 var lastTarget  = null;
@@ -105,7 +106,8 @@ function mouseMove(ev){
             $curTarget = $(target);
 
             $draggingContainer.html('').append($curTarget.clone(true)).css('opacity', 1);
-            routePath.push($curTarget.data('xy'));
+            var curCoords =$curTarget.data('xy').split('-');
+            routePath[actionStep].push('(x: '+curCoords[0]+',y: '+curCoords[1]+')');
 
         }
 
@@ -142,7 +144,7 @@ function mouseMove(ev){
                     $curTarget = $target;
                     curTarget  = target;
 
-                    routePath.push($target.data('xy'));
+                    routePath[actionStep].push('(x: '+targetCoord[0]+',y: '+targetCoord[1]+')');
                 }
             }
         }
@@ -167,8 +169,11 @@ function mouseUp(ev){
     isMouseDown = false;
     lMouseState = false;
 
-    // console.log(routePath);
-    $('#route-print').html(routePath.join(' => '));
+    routePathStr = '';
+    $.each(routePath,function(idx){
+        routePathStr += idx+': '+this.join(' => ')+'<br>';
+    })
+    $('#route-print').html(routePathStr);
 
     var resultCoordMatrix = {};
     for (var i=0; i<globalConfig.frameSizeY; i++) {
@@ -207,8 +212,8 @@ function mouseDown(ev){
 
 
     target.style.opacity = 0.3;
-
-    routePath = [];
+    ++actionStep;
+    routePath[actionStep] = [];
     $('#matrix-matches').html('');
 
     console.log('event: mouse down on element '+ JSON.stringify(target));
