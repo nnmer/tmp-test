@@ -13,10 +13,10 @@ var lastMousePos  = {
 
 window.onload = function(){
     var str = '';
-    for(var i=0;i<conf.frameSizeX;i++){
+    for(var i=0;i<globalConfig.frameSizeX;i++){
         str += '<div class="row" id="row-'+i+'">';
-        for(j=0;j<conf.frameSizeY;j++){
-            var color = getRandomInt(1,conf.colorsTotal);
+        for(j=0;j<globalConfig.frameSizeY;j++){
+            var color = getRandomInt(1,globalConfig.colorsTotal);
             str += '<div class="cell-wrapper"><div data-xy="'+(i+'-'+j)+'" class="cell color-'+color+'"></div></div>';
         }
 
@@ -169,6 +169,29 @@ function mouseUp(ev){
 
     // console.log(routePath);
     $('#route-print').html(routePath.join(' => '));
+
+    var resultCoordMatrix = {};
+    for (var i=0; i<globalConfig.frameSizeY; i++) {
+        row = {};
+        for (var j=0; j<globalConfig.frameSizeX; j++) {
+            row[j] = '';
+        }
+        resultCoordMatrix[i] = row;
+    }
+
+
+    setTimeout(function(){
+        $('.cell').each(function(e){
+            coord = $(this).data('xy').split('-');
+            resultCoordMatrix[coord[1]+''][coord[0]+''] = $(this).css('background-color');
+        })
+
+        match3.set('piecesX',globalConfig.frameSizeX);
+        match3.set('piecesY',globalConfig.frameSizeY);
+        match3.setPieces(resultCoordMatrix);
+        r = match3.getMatches();
+        console.log(r);
+    },200);
 
     $draggingContainer.html('');
     $('.cell').css('opacity',1);
