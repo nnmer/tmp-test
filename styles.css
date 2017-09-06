@@ -1,7 +1,49 @@
-#matrix td {
+#matrix-test{
+    margin-left:250px;
+    float: right;
+}
+#matrix-test .row-test {
+    display: block;
+    margin-top: 10px;
+    width: 130px;
+}
+
+#matrix-test .cell-test{
     border: 1px solid black;
     width:  15px;
     height: 15px;
+    margin: 2px 2px;
+    float: left;
+}
+
+
+#matrix-wrapper{
+    float: left;
+}
+
+#matrix .row {
+    display: block;
+    margin-top: 10px;
+    width: 130px;
+}
+
+#matrix .cell, #dragging div {
+    border: 1px solid black;
+    width:  15px;
+    height: 15px;
+    margin: 2px 2px;
+    float: left;
+}
+
+#dragging {
+    position: absolute;
+    display: none;
+}
+
+.clearfix:after {
+    display: block;
+    content: "";
+    clear: both;
 }
 
 .color-1{
