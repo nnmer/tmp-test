@@ -189,8 +189,8 @@ function mouseUp(ev){
         match3.set('piecesX',globalConfig.frameSizeX);
         match3.set('piecesY',globalConfig.frameSizeY);
         match3.setPieces(resultCoordMatrix);
-        r = match3.getMatches();
-        console.log(r);
+        printMatches(match3.getMatches());
+
     },200);
 
     $draggingContainer.html('');
@@ -208,7 +208,9 @@ function mouseDown(ev){
 
     target.style.opacity = 0.3;
 
-    resetBeforeStart();
+    routePath = [];
+    $('#matrix-matches').html('');
+
     console.log('event: mouse down on element '+ JSON.stringify(target));
 
     isMouseDown = true;
@@ -218,11 +220,24 @@ function mouseDown(ev){
     }
 }
 
-function resetBeforeStart(){
-    routePath = [];
-    $('route-print').html();
-}
+function printMatches(matches){
+    $.each(matches,function(index){
+        $row = $('<div class="row-result"></div>');
+        items = this;
 
+        coords = [];
+        $.each(items,function(idx2){
+           $row.append('<div class="cell-result" style="background-color:'+this.type+'">');
+            coords.push('(x: '+this.x+',y: '+this.y+')');
+        });
+
+        $('#matrix-matches')
+            .append($row)
+            .append(coords.join(' '))
+            .append('<div class="clearfix"></div>');
+    });
+
+}
 
 $(document).on('mousemove',mouseMove);
 $(document).on('mousedown',mouseDown);
