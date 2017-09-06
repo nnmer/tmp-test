@@ -10,3 +10,5 @@ As no additional requirements, we will do next assumptions:
 
 So make it simple for now, horizontal match-3 logic, with 1 iteration (once the finger is out released we only calculate the path and the matches)
 
+The matrix 6x5, totally 30 items; 5 types of colors, randomly filled in;
+
